@@ -5,13 +5,14 @@ const userInfo = require('./utils/user.js');
 const port = process.env.PORT || 5000;
 const path = require('path');
 
-app.use(express.static(path.join(__dirname,"../client/dist")));
+app.use(express.static(path.join(__dirname,"./client/dist")));
 
 
 
 // app.use(cors({
 //     origin: 'http://localhost:5173'
 //   }));
+
 
 app.get('/api/:username',(req,res) => {
     const userName = req.params.username;
@@ -23,6 +24,11 @@ app.get('/api/:username',(req,res) => {
 
     // res.send({name:'manoj'})
 })
+
+app.get('*',(req,res) =>  {
+    res.sendFile(path.join(__dirname,"./client/dist/index.html"))
+});
+
 
 // app.get('*',(req,res) =>{
 //     res.sendFile(path.join(__dirname,"../client/dist/index.html"))
