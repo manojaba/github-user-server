@@ -1,5 +1,5 @@
 
-const GITHUB_TOKEN = ProcessingInstruction.env.GITHUB_TOKEN;
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
 export const userInfo = async (username, callback) => {
   const url = `https://api.github.com/users/${encodeURIComponent(username)}`;
 
