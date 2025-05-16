@@ -24,7 +24,7 @@ app.get('/api/:username',(req,res) => {
 //     res.sendFile(path.join(__dirname,"./client/dist/index.html"))
 // });
 
-app.get('/',(req,res) =>  {
+app.get('',(req,res) =>  {
     res.sendFile(path.join(__dirname,"./client/dist/index.html"))
 });
 
