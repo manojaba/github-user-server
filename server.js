@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const request = require('request');
+const fetch = require('node-fetch');
 const userInfo = require('./utils/user.js');
 const port = process.env.PORT || 5000;
 const path = require('path');
@@ -15,7 +15,10 @@ app.use(express.static(path.join(__dirname,"./client/dist")));
 app.get('/api/:username',(req,res) => {
     const userName = req.params.username;
     userInfo(userName,({login,followers,avatar,following,repos,name,bio,joined,location,blog,company,twitter}) => {
-        res.json({login,followers,avatar,following,repos,name,bio,joined,location,blog,company,twitter})
+        if(!login){
+            return res.status(404).json({error:"User not found or API error"});
+        }
+        res.json({login,followers,avatar,following,repos,name,bio,joined,location,blog,company,twitter});
         });
       
 })
