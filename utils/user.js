@@ -1,6 +1,6 @@
-const fetch = require('node-fetch');
 
-const userInfo = async (username, callback) => {
+
+export const userInfo = async (username, callback) => {
   const url = `https://api.github.com/users/${encodeURIComponent(username)}`;
 
   try {
@@ -31,4 +31,4 @@ const userInfo = async (username, callback) => {
   }
 };
 
-module.exports = userInfo;
+

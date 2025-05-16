@@ -1,10 +1,13 @@
-const express = require('express');
-const app = express();
-const fetch = require('node-fetch');
-const userInfo = require('./utils/user.js');
-const port = process.env.PORT || 5000;
-const path = require('path');
+import express from 'express';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { userInfo } from './utils/user.js';
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const port = process.env.PORT || 5000;
+
+const app = express();
 app.use(express.static(path.join(__dirname,"./client/dist")));
 
 
