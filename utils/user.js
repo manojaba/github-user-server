@@ -1,11 +1,13 @@
 
-
+const GITHUB_TOKEN = ProcessingInstruction.env.GITHUB_TOKEN;
 export const userInfo = async (username, callback) => {
   const url = `https://api.github.com/users/${encodeURIComponent(username)}`;
 
   try {
     const response = await fetch(url, {
-      headers: { 'User-Agent': 'node.js' }
+      headers: { 'User-Agent': 'node.js',
+        'Authorization' : `token ${ GITHUB_TOKEN}` 
+      }
     });
     const body = await response.json();
 
